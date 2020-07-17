@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 
+
 const CharacterStyled = styled.div`
     width:100%;
     height: 50vh;
@@ -29,8 +30,16 @@ const CharacterStyled = styled.div`
 
 `
 
+function randomArrayGenerator(){
+    const array = []
+    for(let i=0; i<4; i++){
+        array.push(Math.floor(Math.random()*590))        
+    }
+    return array;    
+}
+
 export default function Character (props){
-    const{character} = props;
+    const{character,setIdRandomizer} = props;
 
     return (
         <CharacterStyled>
@@ -41,10 +50,9 @@ export default function Character (props){
                     <h2>Species:{character.species}</h2>
                     <h2>Gender: {character.gender}</h2>
                     <h2>Status:{character.status}</h2>
-                    <button>Click for Random Chara</button>
+                    <button onClick={(event)=>{setIdRandomizer(randomArrayGenerator())}}>Click to Shuffle Characters</button>
                 </div>
             </div>            
         </CharacterStyled>
     )
-
 }

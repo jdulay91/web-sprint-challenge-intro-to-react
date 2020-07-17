@@ -6,12 +6,12 @@ import axios from 'axios';
 const App = () => {
 
   const[characters,setCharacter] = useState([])
-  const[idRandomizer,setIdRandomizer] = useState(0)
+  const[idRandomizer,setIdRandomizer] = useState([1,2,3,4])
   const rickAndMortyApiBaseUrl = 'https://rickandmortyapi.com/api/character/'
 
   useEffect(()=>{
     axios
-    .get(`${rickAndMortyApiBaseUrl}/7,2,3,4`)
+    .get(`${rickAndMortyApiBaseUrl}/[${idRandomizer}]`)
     .then(res=>{        
       setCharacter(res.data)            
        
@@ -19,14 +19,15 @@ const App = () => {
     .catch(err=>{
       console.log('Oh no you have encountered an ',err)
     })
-  },[])
+  },[idRandomizer])
+
 
 
   return (
     <div className="App">
       <h1 className="Header">Characters</h1>
       {characters.map(character=>{
-        {return <Character key={character.id} character={character}/>}
+        {return <Character key={character.id} character={character} setIdRandomizer={setIdRandomizer}/>}
       })}      
     </div>
   );
