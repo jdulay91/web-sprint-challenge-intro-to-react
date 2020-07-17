@@ -11,7 +11,7 @@ const App = () => {
 
   useEffect(()=>{
     axios
-    .get(`${rickAndMortyApiBaseUrl}/[${idRandomizer}]`)
+    .get(`${rickAndMortyApiBaseUrl}/${idRandomizer}`)
     .then(res=>{        
       setCharacter(res.data)            
        
