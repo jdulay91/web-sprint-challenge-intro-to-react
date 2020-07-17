@@ -1,6 +1,9 @@
 // Write your Character component here
 import React from 'react'
 import styled from 'styled-components'
+import Text from './Text'
+import Button from './Button'
+import Image from './Image'
 
 
 
@@ -30,13 +33,6 @@ const CharacterStyled = styled.div`
 
 `
 
-function randomArrayGenerator(){
-    const array = []
-    for(let i=0; i<4; i++){
-        array.push(Math.floor(Math.random()*590))        
-    }
-    return array;    
-}
 
 export default function Character (props){
     const{character,setIdRandomizer} = props;
@@ -44,13 +40,10 @@ export default function Character (props){
     return (
         <CharacterStyled>
             <div className="flexContainer">
-                <img src={character.image} alt={character.species}/>
+                <Image image={character.image} alt={character.species}/>                
                 <div>
-                    <h2>Name: {character.name}</h2>
-                    <h2>Species:{character.species}</h2>
-                    <h2>Gender: {character.gender}</h2>
-                    <h2>Status:{character.status}</h2>
-                    <button onClick={(event)=>{setIdRandomizer(randomArrayGenerator())}}>Click to Shuffle Characters</button>
+                    <Text character={character}/>
+                    <Button random={setIdRandomizer}/>
                 </div>
             </div>            
         </CharacterStyled>
