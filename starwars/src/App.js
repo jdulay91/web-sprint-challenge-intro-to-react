@@ -11,9 +11,9 @@ const App = () => {
 
   useEffect(()=>{
     axios
-    .get(`${rickAndMortyApiBaseUrl}/1,2,3,4`)
+    .get(`${rickAndMortyApiBaseUrl}/7,2,3,4`)
     .then(res=>{        
-      setCharacter(res.data)      
+      setCharacter(res.data)            
        
     })
     .catch(err=>{
